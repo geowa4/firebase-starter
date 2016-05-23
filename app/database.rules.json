@@ -1,4 +1,9 @@
 {
-  ".read": true,
-  ".write": true
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "counter": {
+      ".validate": "newData.val() <= 5"
+    }
+  }
 }

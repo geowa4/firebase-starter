@@ -11,9 +11,11 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 const databaseRef = firebase.database().ref()
 
 function login () {
-  return Rx.Observable.fromPromize(
-    firebase.auth().signInWithPopup(googleAuthProvider)
-  )
+  return firebase.auth().signInWithPopup(googleAuthProvider)
+}
+
+function logout () {
+  return firebase.auth().signOut()
 }
 
 function renderAnonymousState () {
@@ -58,6 +60,16 @@ Rx.Observable
   })
 
 Rx.Observable
+  .fromEvent(document, 'click')
+  .filter((evt) => {
+    return evt.target.className.indexOf('logout-button') != -1
+  })
+  .flatMap(logout)
+  .subscribe((result) => {
+    console.log(result)
+  })
+
+Rx.Observable
   .create((subscriber) => {
     firebase.auth().onAuthStateChanged(user => {
       subscriber.next(user)
@@ -68,7 +80,18 @@ Rx.Observable
       renderAnonymousState()
     }
     else {
-      renderAuthenticatedState(user)
+      databaseRef
+        .child('counter')
+        .once('value')
+        .then((snapshot) => {
+          renderAuthenticatedState(user)
+          if (snapshot.val() >= 5) {
+            showCapacityErrorState()
+          }
+          else {
+            showAbleToSubmitState()
+          }
+        })
     }
   })
 
@@ -107,18 +130,6 @@ Rx.Observable
   },
   () => {
     showCapacityErrorState()
-  })
-
-databaseRef
-  .child('counter')
-  .once('value')
-  .then((snapshot) => {
-    if (snapshot.val() >= 5) {
-      showCapacityErrorState()
-    }
-    else {
-      showAbleToSubmitState()
-    }
   })
 
 }(window.firebase, window.Rx, window.d3));
