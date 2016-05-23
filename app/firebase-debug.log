@@ -1,0 +1,14 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/6.2.0/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.0
+[debug] Platform:     darwin
+[debug] Node Version: v6.2.0
+[debug] Time:         Sat May 21 2016 23:35:47 GMT-0400 (EDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/geowa4/Development/geowa4/learn-firebase/app
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000

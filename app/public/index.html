@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Firebase Starter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="auth-state anonymous">
+    <nav>
+      <button class="auth-state-anonymous login-button">Login</button>
+      <span class="auth-state-authenticated username">&nbsp;</span>
+    </nav>
+    <section class="hero">
+      <h1>Firebase Starter</h1>
+      <form id="entry-form" class="auth-state-authenticated" action="">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label for="field1">Field 1</label>
+              </td>
+              <td>
+                <input type="text" name="field1" id="field1" value="" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="submit" name="submit" id="submit" value="Submit" />
+      </form>
+      <p class="welcome"></p>
+    </section>
+    <script src="https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js" charset="utf-8" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js" charset="utf-8" defer></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
+    <script src="/js/main.js" charset="utf=8" defer></script>
+  </body>
+</html>

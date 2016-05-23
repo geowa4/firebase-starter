@@ -1,0 +1,12 @@
+.auth-state.anonymous .auth-state-authenticated {
+  display: none;
+}
+.auth-state.anonymous .auth-state-anonymous {
+  display: initial;
+}
+.auth-state.authenticated .auth-state-authenticated {
+  display: initial;
+}
+.auth-state.authenticated .auth-state-anonymous {
+  display: none;
+}
