@@ -10,3 +10,16 @@
 .auth-state.authenticated .auth-state-anonymous {
   display: none;
 }
+
+.submission-state-success, .submission-state-capacity, .submission-state-unsubmitted {
+  display: none;
+}
+.submission-state.unsubmitted .submission-state-unsubmitted {
+  display: initial;
+}
+.submission-state.success .submission-state-success {
+  display: initial;
+}
+.submission-state.capacity .submission-state-capacity {
+  display: initial;
+}

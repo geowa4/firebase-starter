@@ -12,9 +12,17 @@
       <button class="auth-state-anonymous login-button">Login</button>
       <span class="auth-state-authenticated username">&nbsp;</span>
     </nav>
-    <section class="hero">
+    <section id="hero">
       <h1>Firebase Starter</h1>
-      <form id="entry-form" class="auth-state-authenticated" action="">
+    </section>
+    <section id="content" class="auth-state-authenticated submission-state">
+      <p class="submission-state-success">
+        Thank you for your submission!
+      </p>
+      <p class="submission-state-capacity">
+        Sorry, we cannot accept any more submissions.
+      </p>
+      <form id="entry-form" class="submission-state-unsubmitted" action="">
         <table>
           <tbody>
             <tr>
@@ -29,7 +37,6 @@
         </table>
         <input type="submit" name="submit" id="submit" value="Submit" />
       </form>
-      <p class="welcome"></p>
     </section>
     <script src="https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js" charset="utf-8" defer></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js" charset="utf-8" defer></script>

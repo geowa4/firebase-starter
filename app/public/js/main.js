@@ -30,6 +30,23 @@ function renderAuthenticatedState (user) {
   d3.select('.username').text(user.displayName)
 }
 
+function showAbleToSubmitState () {
+  d3.select('.submission-state')
+    .classed('unsubmitted', true)
+}
+
+function showSuccessfulSubmissionState () {
+  d3.select('.submission-state')
+    .classed('unsubmitted', false)
+    .classed('success', true)
+}
+
+function showCapacityErrorState () {
+  d3.select('.submission-state')
+    .classed('unsubmitted', false)
+    .classed('capacity', true)
+}
+
 Rx.Observable
   .fromEvent(document, 'click')
   .filter((evt) => {
@@ -86,12 +103,22 @@ Rx.Observable
     return databaseRef.child('entries').push().set(formData)
   })
   .subscribe(() => {
-    // TODO: render flash success
-    document.getElementById('entry-form').reset()
+    showSuccessfulSubmissionState()
   },
   () => {
-    // TODO: render error saying you were too late
-    document.getElementById('entry-form').reset()
+    showCapacityErrorState()
+  })
+
+databaseRef
+  .child('counter')
+  .once('value')
+  .then((snapshot) => {
+    if (snapshot.val() >= 5) {
+      showCapacityErrorState()
+    }
+    else {
+      showAbleToSubmitState()
+    }
   })
 
 }(window.firebase, window.Rx, window.d3));
